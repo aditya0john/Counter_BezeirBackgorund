@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 function RichText({ toggle }: { toggle: boolean }) {
-  const getSavedData = () => JSON.parse(localStorage?.getItem("form") || "{}");
-
+  const getSavedData = () => {
+    if (typeof window !== "undefined") {
+      return JSON.parse(localStorage.getItem("form") || "{}");
+    }
+    return {}; // Return empty object if running on the server
+  };
   const [options, setOptions] = useState({
     Bold: false,
     Italics: false,
@@ -19,11 +23,11 @@ function RichText({ toggle }: { toggle: boolean }) {
   });
 
   useEffect(() => {
-  setDetails((prev) => ({
-    ...prev,
-    // Add any updates if necessary
-  }));
-}, []);
+    setDetails((prev) => ({
+      ...prev,
+      // Add any updates if necessary
+    }));
+  }, []);
 
   return (
     <div

@@ -14,7 +14,9 @@ function ProgressBarForm({ toggle }: { toggle: boolean }) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    localStorage.setItem("form", JSON.stringify(detials)); // data to localstorage
+    if (typeof window !== "undefined") {
+      localStorage.setItem("form", JSON.stringify(detials));
+    }
     console.log("Form Submitted with Data:", detials);
     alert("Form Submitted!");
   };

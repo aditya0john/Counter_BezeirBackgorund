@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 
 function Counter({ toggle }: { toggle: boolean }) {
-  const [count, setCount] = useState<number>(() => {
-    const storedCount = localStorage.getItem("count");
-    return storedCount ? JSON.parse(storedCount) : 0;
-  });
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    localStorage.setItem("count", JSON.stringify(count));
+    if (typeof window !== "undefined") {
+      const storedCount = localStorage.getItem("count");
+      if (storedCount !== null) {
+        setCount(JSON.parse(storedCount));
+      }
+    }
+  }, []);
+  
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("count", JSON.stringify(count));
+    }
   }, [count]);
 
   return (
