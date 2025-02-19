@@ -19,7 +19,10 @@ function RichText({ toggle }: { toggle: boolean }) {
   });
 
   useEffect(() => {
-    setDetails(details);
+    setDetails((prev) => ({
+      ...prev,
+      // Add any updates if necessary
+    }));
   }, []);
 
   return (

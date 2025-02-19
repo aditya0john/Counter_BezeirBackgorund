@@ -12,7 +12,7 @@ function ProgressBarForm({ toggle }: { toggle: boolean }) {
     Phone: "",
   });
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     localStorage.setItem("form", JSON.stringify(detials)); // data to localstorage
     console.log("Form Submitted with Data:", detials);
