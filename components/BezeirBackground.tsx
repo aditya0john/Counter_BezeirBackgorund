@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 
 // Custom easing function
 export const easeInOutCubic = (t: number) => {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 };
 
-const BezierBackground = ({ children }) => {
+const BezierBackground = ({ children }:{children: ReactNode}) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
