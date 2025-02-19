@@ -5,12 +5,15 @@ export const easeInOutCubic = (t: number) => {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 };
 
-const BezierBackground = ({ children }:{children: ReactNode}) => {
+const BezierBackground = ({ children }: { children: ReactNode }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     localStorage.setItem("count", JSON.stringify(count));
-    setCount(JSON.parse(localStorage.getItem("count")));
+    const storedCount = localStorage.getItem("count");
+    if (storedCount !== null) {
+      setCount(JSON.parse(storedCount));
+    }
   }, [count]);
 
   // Easing function to get smooth transitions
