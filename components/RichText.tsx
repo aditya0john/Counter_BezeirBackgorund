@@ -19,11 +19,11 @@ function RichText({ toggle }: { toggle: boolean }) {
   });
 
   useEffect(() => {
-    setDetails((prev) => ({
-      ...prev,
-      // Add any updates if necessary
-    }));
-  }, []);
+  setDetails((prev) => ({
+    ...prev,
+    // Add any updates if necessary
+  }));
+}, []);
 
   return (
     <div
@@ -54,7 +54,7 @@ function RichText({ toggle }: { toggle: boolean }) {
                   options.Lists ? "list-item list-inside" : ""
                 }`}
               >
-                {Object.values(details).map((val, i) => val)[i]}
+                {Object.values(details).map((val) => val)[i]}
               </p>
             </span>
           ))}
