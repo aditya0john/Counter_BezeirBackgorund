@@ -173,7 +173,7 @@ function ProgressBarForm({ toggle }: { toggle: boolean }) {
     }
   };
 
-  const [theme, setTheme] = useState({
+  const theme = {
     ProgressColorLight: "bg-gray-200/[0.1]",
     ProgressColorDark: "bg-black",
     PrimaryColorLight: "bg-gray-100/[0.4]",
@@ -182,7 +182,7 @@ function ProgressBarForm({ toggle }: { toggle: boolean }) {
     BorderDark: "border-gray-500",
     textLight: "text-black",
     textDark: "text-white",
-  });
+  };
 
   return (
     <div

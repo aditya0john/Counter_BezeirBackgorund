@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 function Counter({ toggle }: { toggle: boolean }) {
-  const [count, setCount] = useState(
-    0 || JSON.parse(localStorage?.getItem("count"))
-  );
+  const [count, setCount] = useState(() => {
+    return JSON.parse(localStorage?.getItem("count")) || 0;
+  });
 
   useEffect(() => {
     localStorage.setItem("count", JSON.stringify(count));
